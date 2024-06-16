@@ -1,0 +1,95 @@
+/* login.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(https://i0.wp.com/thatnhucuocsong.com.vn/wp-content/uploads/2022/04/Hinh-nen-phi-hanh-gia.jpg);
+	background-size: cover;
+	
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login {
+    width: 100%;
+    padding: 20px 20px 40px 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-main h1 {
+	font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #333333;
+}
+
+.login-main h2 {
+	font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #555555;
+    float: left;
+    font-size: 20px;
+	padding-left: 10px;
+	font-weight: light-bold;
+}
+
+.login-main input[type="text"],.login-main input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-main input[type="submit"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-main input[type="submit"]:hover {
+    background-color: grey;
+}
+
+.login-main {
+    padding: 20px;
+}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    FONT-SIZE: 15px;
+}
+.password-container {
+        position: relative;
+}
+ .toggle-password {
+    position: absolute;
+    top: 75%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.error-message {
+    color: red;
+    margin-top: 20px;
+    font-size: 15px;
+}
