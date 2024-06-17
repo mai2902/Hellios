@@ -1,0 +1,139 @@
+/api/loaiPhong
+{
+    "loai" : "A",
+    "donGia" : 3000000
+}
+{
+    "loai" : "B",
+    "donGia" : 2500000
+}
+{
+    "loai" : "C",
+    "donGia" : 2000000
+}
+{
+    "loai" : "D",
+    "donGia" : 1500000
+}
+
+/api/nguoiThue
+{
+    "hoTen" : "Nguyen Van A",
+    "diaChi" : "A b C S",
+    "ngaySinh" : "1997-12-31T12:31:30.21Z",
+    "cccd" : "094737876253",
+    "sdt" : "0983642837"
+}
+
+{
+    "hoTen" : "Nguyen Thi B",
+    "diaChi" : "jfs ajaf afa jfj",
+    "ngaySinh" : "1988-04-30T11:33:23.11Z",
+    "cccd" : "094737876253",
+    "sdt" : "0983642837"
+}
+
+{
+    "hoTen" : "Nguyen Tran C",
+    "diaChi" : "aje aencw kfs jd",
+    "ngaySinh" : "1990-09-23T10:23:56.21Z",
+    "cccd" : "098563728765",
+    "sdt" : "0923737183"
+}
+
+/api/phong
+{
+    "phong_id" : 12,
+    "loaiPhong" : "A",
+    "tinhTrang" : "Trong"
+}
+
+{
+    "phong_id" : 10,
+    "loaiPhong" : "C",
+    "tinhTrang" : "Da thue"
+}
+
+{
+    "phong_id" : 8,
+    "loaiPhong" : "B",
+    "tinhTrang" : "Trong"
+}
+
+/api/hoaDon
+{
+    "phong_id" : 12,
+    "tienDien" : 300000,
+    "tienNuoc" : 400000,
+    "tongTien" : 700000,
+    "ngayLapHoaDon" : "2024-05-23T10:23:56.28Z"
+}
+
+{
+    "phong_id" : 10,
+    "tienDien" : 250000,
+    "tienNuoc" : 300000,
+    "tongTien" : 550000,
+    "ngayLapHoaDon" : "2024-04-20T11:34:25.21Z"
+}
+
+{
+    "phong_id" : 8,
+    "tienDien" : 150000,
+    "tienNuoc" : 450000,
+    "tongTien" : 550000,
+    "ngayLapHoaDon" : "2024-02-24T11:21:51.21Z"
+}
+
+/api/baoCaoNo
+
+{
+    "phong_id" : 8,
+    "noDau" : 150000,
+    "noCuoi" : 450000,
+    "phatSinh" : 300000,
+    "ngayLapHoaDon" : "2024-02-24T11:21:51.21Z"
+}
+
+{
+    "phong_id" : 10,
+    "noDau" : 100000,
+    "noCuoi" : 300000,
+    "phatSinh" : 200000,
+    "ngayLapHoaDon" : "2024-05-11T12:25:45.21Z"
+}
+
+{
+    "phong_id" : 12,
+    "noDau" : 200000,
+    "noCuoi" : 500000,
+    "phatSinh" : 300000,
+    "ngayLapHoaDon" : "2024-03-15T10:25:25.31Z"
+}
+
+/api/phieuThue
+
+{
+    "nguoiThue_id" : 10,
+    "ngayBatDau" : "2024-03-15T10:25:25.31Z",
+    "ngayKetThuc" : "2024-06-15T10:25:25.31Z",
+    "phong_id" : 10
+}
+
+{
+    "nguoiThue_id" : 25,
+    "ngayBatDau" : "2024-04-24T10:25:25.31Z",
+    "ngayKetThuc" : "2024-12-24T10:25:25.31Z",
+    "phong_id" : 8
+}
+
+{
+    "nguoiThue_id" : 14,
+    "ngayBatDau" : "2024-01-30T10:25:25.31Z",
+    "ngayKetThuc" : "2024-08-30T10:25:25.31Z",
+    "phong_id" : 12
+}
+
+
+
+
