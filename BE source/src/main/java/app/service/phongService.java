@@ -53,13 +53,10 @@ public class phongService {
     }
 
     public RestResponse<createPhongResponse> CreatePhong(createPhongRequest Phong) {
-        Optional<phong> PhongDaTonTai = PhongRepository.findById(Phong.getId());
-        if(PhongDaTonTai.isPresent())
-            return null;
-        phong res = PhongRepository.save(mapper.map(Phong, phong.class));
+        phong phongMoi = PhongRepository.save(mapper.map(Phong, phong.class));
         return RestResponse.<createPhongResponse>builder()
                 .status(HttpStatus.CREATED.value())
-                .data(mapper.map(res, createPhongResponse.class))
+                .data(mapper.map(phongMoi, createPhongResponse.class))
                 .build();
     }
 
