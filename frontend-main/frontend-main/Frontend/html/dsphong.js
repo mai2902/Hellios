@@ -1,14 +1,16 @@
 // Dữ liệu phòng ban đầu
 const rooms = [
-    { id: 1, name: 'Phòng 1', type: 'A', status: 'available', price: 2170000 },
-    { id: 2, name: 'Phòng 2', type: 'B', status: 'occupied', price: 2170000 },
-    { id: 3, name: 'Phòng 3', type: 'C', status: 'available', price: 2170000 },
-    { id: 4, name: 'Phòng 4', type: 'D', status: 'occupied', price: 2170000 },
-    { id: 5, name: 'Phòng 10', type: 'D', status: 'available', price: 2170000 },
-    { id: 6, name: 'Phòng 11', type: 'C', status: 'occupied', price: 2170000 },
-    { id: 7, name: 'Phòng 14', type: 'B', status: 'available', price: 2170000 },
-    { id: 8, name: 'Phòng 12', type: 'A', status: 'occupied', price: 2170000 },
-    // Thêm phòng khác nếu cần
+    { id: 1, name: 'Phòng 111', type: 'A', status: 'available', price: 2000000 },
+    { id: 2, name: 'Phòng 112', type: 'B', status: 'available', price: 2500000 },
+    { id: 3, name: 'Phòng 113', type: 'C', status: 'available', price: 3000000 },
+    { id: 4, name: 'Phòng 114', type: 'D', status: 'available', price: 3500000 },
+    { id: 5, name: 'Phòng 101', type: 'D', status: 'available', price: 3500000 },
+    { id: 6, name: 'Phòng 102', type: 'C', status: 'occupied', price: 3000000 },
+    { id: 7, name: 'Phòng 115', type: 'B', status: 'available', price: 2500000 },
+    { id: 8, name: 'Phòng 106', type: 'D', status: 'occupied', price: 2000000 },
+    { id: 9, name: 'Phòng 103', type: 'A', status: 'occupied', price: 2000000 },
+    { id: 10, name: 'Phòng 104', type: 'B', status: 'occupied', price: 2500000 },
+    { id: 11, name: 'Phòng 105', type: 'C', status: 'occupied', price: 3000000 },
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
