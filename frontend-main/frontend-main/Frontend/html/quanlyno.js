@@ -1,9 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var invoices = [
+    //quản lý nợ
+    const invoices = [
         { id: 1, month: '2023-01', room: '101', oldDebt: 1000000, newDebt: 200000, finalDebt: 1200000 },
         { id: 2, month: '2023-02', room: '102', oldDebt: 500000, newDebt: 300000, finalDebt: 800000 },
-        { id: 3, month: '2021-01', room: '101', oldDebt: 1000000, newDebt: 200000, finalDebt: 1200000 },
-        { id: 4, month: '2022-02', room: '103', oldDebt: 100000, newDebt: 3200000, finalDebt: 3300000 }
+        { id: 3, month: '2023-03', room: '103', oldDebt: 200000, newDebt: 100000, finalDebt: 300000 },
+        { id: 4, month: '2023-04', room: '104', oldDebt: 100000, newDebt: 320000, finalDebt: 330000 },
+        { id: 5, month: '2023-05', room: '105', oldDebt: 500000, newDebt: 200000, finalDebt: 700000 },
+        { id: 6, month: '2023-06', room: '106', oldDebt: 800000, newDebt: 300000, finalDebt: 1100000 },
+        { id: 7, month: '2023-07', room: '102', oldDebt: 100000, newDebt: 400000, finalDebt: 500000 },
+        { id: 8, month: '2023-08', room: '103', oldDebt: 600000, newDebt: 100000, finalDebt: 700000 }
     ];
 
     // Function to load and display filtered invoices
