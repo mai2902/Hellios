@@ -1,7 +1,6 @@
 CREATE TABLE nguoiThue (
 	id int AUTO_INCREMENT PRIMARY KEY,
 	hoten varchar(255),
-	diachi varchar(255),
 	ngaysinh date,
 	cccd varchar(255),
 	sdt varchar(255)
