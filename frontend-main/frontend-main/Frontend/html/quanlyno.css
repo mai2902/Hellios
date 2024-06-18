@@ -1,0 +1,97 @@
+.room-product-main {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ababab;
+	margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    padding-top: 10px;
+    margin-right: 60px;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.tenant-grid {
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .tenant-grid {
+        width: 25%;
+        float: left;
+    }
+}
+
+.col-md-2 {
+    margin-top: 15px;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 30px;
+}
+
+.form-control {
+    width: 100%;
+    max-width: 400px; /* Điều chỉnh kích thước tối đa */
+}
+
+.room-product-bottom {
+    padding-left: 30px;
+}
+
+.btn-primary {
+    color: #fff;
+    font-size: 16px;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+@media (min-width: 768px) {
+    .tenant-grid {
+        width: 30%;
+        float: left;
+    }
+}
+.room-product-bottom a{
+	font-size: 16px;
+}
+.btn-primary {
+    color: #fff;
+    font-size: 14px;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.btn-group-sm>.btn, .btn-sm {
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+@media (min-width: 768px) {
+    .form-inline .form-control {
+        display: inline-block;
+        width: 120px;
+        vertical-align: middle;
+    }
+}
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    margin-top: 20px;
+    margin-bottom: 20px;
+	margin-right: 40px;
+}
+#totalDebt{
+	margin-left: 20px;
+    font-size: 18px;
+    color: red;
+}
