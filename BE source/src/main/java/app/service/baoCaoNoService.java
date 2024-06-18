@@ -55,13 +55,7 @@ public class baoCaoNoService {
     }
 
     public RestResponse<createBaoCaoNoResponse> CreateBaoCaoNo(createBaoCaoNoRequest BaoCaoNo) {
-        Optional<baoCaoNo> BaoCaoNoCu = BaoCaoNoRepository.findById(BaoCaoNo.getPhong_id());
-        if (BaoCaoNoCu.isEmpty()) {
-            return null;
-        }
-        baoCaoNo BaoCaoNoMoi = mapper.map(BaoCaoNo, baoCaoNo.class);
-        BaoCaoNoCu.get().setPhong_id(BaoCaoNoMoi.getPhong_id());
-        BaoCaoNoRepository.save(BaoCaoNoMoi);
+       baoCaoNo BaoCaoNoMoi = BaoCaoNoRepository.save(mapper.map(BaoCaoNo, baoCaoNo.class));
         return RestResponse.<createBaoCaoNoResponse>builder()
                 .status(HttpStatus.CREATED.value())
                 .data(mapper.map(BaoCaoNoMoi, createBaoCaoNoResponse.class))
