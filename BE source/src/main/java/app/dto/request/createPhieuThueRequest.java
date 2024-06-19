@@ -9,8 +9,9 @@ import java.time.Instant;
 @Data
 
 public class createPhieuThueRequest {
-    String nguoiThue_id;
+    long nguoiThue_id;
     Instant ngayBatDau;
     Instant ngayKetThuc;
     long phong_id;
+    long soPhong;
 }

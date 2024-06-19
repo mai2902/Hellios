@@ -10,11 +10,11 @@ import java.time.LocalDate;
 @Data
 
 public class createHoaDonResponse {
-    long id;
     long phong_id;
     long tienDien;
     long tienNuoc;
     long donGia;
     long tongTien;
+    long soPhong;
     Instant ngayLapHoaDon;
 }

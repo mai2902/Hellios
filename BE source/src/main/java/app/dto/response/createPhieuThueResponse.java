@@ -10,7 +10,7 @@ import java.time.Instant;
 
 public class createPhieuThueResponse {
     long id;
-    String nguoiThue_id;
+    long nguoiThue_id;
     Instant ngayBatDau;
     Instant ngayKetThuc;
     long phong_id;

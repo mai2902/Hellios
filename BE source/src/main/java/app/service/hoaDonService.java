@@ -3,6 +3,7 @@ package app.service;
 import app.common.RestResponse;
 import app.dto.request.createHoaDonRequest;
 import app.dto.request.updateHoaDonRequest;
+import app.dto.response.createBaoCaoNoResponse;
 import app.dto.response.createHoaDonResponse;
 import app.dto.response.getOneHoaDonResponse;
 import app.dto.response.updateHoaDonResponse;
@@ -18,7 +19,7 @@ import app.repository.hoaDonRepository;
 import app.repository.loaiPhongRepository;
 import app.repository.phongRepository;
 
-
+import java.io.Console;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -29,7 +30,6 @@ public class hoaDonService {
     @Autowired
     private final hoaDonRepository HoaDonRepository;
     private final phongRepository PhongRepository;
-    private final loaiPhongRepository LoaiPhongRepository;
     private final ModelMapper mapper;
 
     public RestResponse<List<getListHoaDonResponse>> GetListHoaDon() {
@@ -57,12 +57,21 @@ public class hoaDonService {
     }
 
     public RestResponse<createHoaDonResponse> CreateHoaDon(createHoaDonRequest HoaDon) {
-        Optional<phong> Phong = PhongRepository.findById(HoaDon.getPhong_id());
-        if (Phong.isEmpty()) {
-            return null;
+        if (HoaDon.getPhong_id() != 0) {
+            List<phong> phongs = PhongRepository.findAll();
+            Optional<phong> ph = Optional.empty();
+            for (phong p : phongs) {
+                if (p.getSoPhong() == HoaDon.getPhong_id()) {
+                    ph = Optional.ofNullable(p);
+                }
+            }
+            if (ph.isEmpty()) {
+                return RestResponse.<createHoaDonResponse>builder()
+                        .status(HttpStatus.BAD_REQUEST.value())
+                        .build();
+            }
         }
         hoaDon hoaDonMoi = mapper.map(HoaDon, hoaDon.class);
-        hoaDonMoi.setPhong_id(Phong.get());
         HoaDonRepository.save(hoaDonMoi);
         return RestResponse.<createHoaDonResponse>builder()
                 .status(HttpStatus.CREATED.value())
@@ -74,11 +83,17 @@ public class hoaDonService {
         Optional<hoaDon> hoaDonCu = HoaDonRepository.findById(id);
         if (hoaDonCu.isPresent()) {
             if (HoaDon.getPhong_id() != 0) {
-                Optional<phong> Phong_id = PhongRepository.findById(HoaDon.getPhong_id());
-                if (Phong_id.isEmpty()) {
-                    return null;
-                } else {
-                    hoaDonCu.get().setPhong_id(Phong_id.get());
+                List<phong> phongs = PhongRepository.findAll();
+                Optional<phong> ph = Optional.empty();
+                for (phong p : phongs) {
+                    if (p.getSoPhong() == HoaDon.getPhong_id()) {
+                        ph = Optional.ofNullable(p);
+                    }
+                }
+                if (ph.isEmpty()) {
+                    return RestResponse.<updateHoaDonResponse>builder()
+                            .status(HttpStatus.BAD_REQUEST.value())
+                            .build();
                 }
             }
             if (HoaDon.getTienDien() != 0) {
@@ -92,8 +107,7 @@ public class hoaDonService {
                     .status(HttpStatus.OK.value())
                     .data(mapper.map(hoaDonCu, updateHoaDonResponse.class))
                     .build();
-        }
-        else {
+        } else {
             return null;
         }
     }

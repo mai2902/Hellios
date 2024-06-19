@@ -15,5 +15,6 @@ public class createHoaDonRequest {
     long tienNuoc;
     long donGia;
     long tongTien;
+    long soPhong;
     Instant ngayLapHoaDon;
 }

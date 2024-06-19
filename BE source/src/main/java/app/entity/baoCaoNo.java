@@ -26,9 +26,6 @@ public class baoCaoNo {
     )
     @Id
     private long Id;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "phong_id", referencedColumnName = "id")
-    private phong  phong_id;
     @Column(name = "noDau")
     private long noDau;
     @Column(name = "phatSinh")
@@ -37,4 +34,6 @@ public class baoCaoNo {
     private long noCuoi;
     @Column(name = "thang")
     private Instant thang;
+    @Column(name = "soPhong")
+    private long soPhong;
 }

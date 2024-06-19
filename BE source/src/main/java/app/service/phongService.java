@@ -64,7 +64,7 @@ public class phongService {
         Optional<phong> phongCu = PhongRepository.findById(id);
         if (phongCu.isPresent()) {
             if(Phong.getSoPhong()!=0) {
-                phongCu.get().setSophong(Phong.getSoPhong());
+                phongCu.get().setSoPhong(Phong.getSoPhong());
             }
             if(Phong.getLoaiPhong().equals("A")||Phong.getLoaiPhong().equals("B")||Phong.getLoaiPhong().equals("C")||Phong.getLoaiPhong().equals("D")) {
                 phongCu.get().setLoaiPhong(Phong.getLoaiPhong());

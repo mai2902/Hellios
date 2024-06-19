@@ -27,12 +27,14 @@ public class phieuThue {
     @Id
     private long id;
     @Column(name = "nguoiThue_id")
-    private String nguoiThue_id;
+    private long nguoiThue_id;
     @Column(name = "ngayBatDau")
     private Instant ngayBatDau;
     @Column(name = "ngayKetThuc")
     private Instant ngayKetThuc;
+    @Column(name = "soPhong")
+    private long soPhong;
     @ManyToOne
     @JoinColumn(name = "phong_id")
-    private phong phong_id;
+    private phong phong;
 }

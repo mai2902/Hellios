@@ -26,18 +26,16 @@ public class hoaDon {
     )
     @Id
     private long id;
-    @ManyToOne
-    @JoinColumn(name = "phong_id")
-    private phong phong_id;
     @Column(name = "tienDien")
     private long tienDien;
     @Column(name = "tienNuoc")
     private long tienNuoc;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "donGia", referencedColumnName = "id")
-    private loaiPhong donGia;
     @Column(name = "tongTien")
     private long tongTien;
+    @Column(name = "donGiaa")
+    private long donGia;
     @Column(name = "ngayLapHoaDon")
     private Instant ngayLapHoaDon;
+    @Column(name = "soPhong")
+    private long soPhong;
 }

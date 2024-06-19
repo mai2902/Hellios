@@ -27,7 +27,7 @@ public class phong {
     @Id
     private long id;
     @Column(name = "soPhong")
-    private long sophong;
+    private long soPhong;
     @Column(name = "loaiPhong")
     private String loaiPhong;
     @Column(name = "tinhTrang")

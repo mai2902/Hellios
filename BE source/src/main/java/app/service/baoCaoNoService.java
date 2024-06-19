@@ -1,8 +1,10 @@
 package app.service;
+
 import app.common.RestResponse;
 import app.dto.request.createBaoCaoNoRequest;
 import app.dto.request.updateBaoCaoNoRequest;
 import app.dto.response.createBaoCaoNoResponse;
+import app.dto.response.createPhieuThueResponse;
 import app.dto.response.getListBaoCaoNoResponse;
 import app.dto.response.getOneBaoCaoNoResponse;
 import app.dto.response.updateBaoCaoNoResponse;
@@ -55,7 +57,21 @@ public class baoCaoNoService {
     }
 
     public RestResponse<createBaoCaoNoResponse> CreateBaoCaoNo(createBaoCaoNoRequest BaoCaoNo) {
-       baoCaoNo BaoCaoNoMoi = BaoCaoNoRepository.save(mapper.map(BaoCaoNo, baoCaoNo.class));
+
+        List<phong> phongs = PhongRepository.findAll();
+        Optional<phong> ph = Optional.empty();
+        for (phong p : phongs) {
+            if (p.getSoPhong() == BaoCaoNo.getPhong_id()) {
+                ph = Optional.ofNullable(p);
+            }
+        }
+        if (ph.isEmpty()) {
+            return RestResponse.<createBaoCaoNoResponse>builder()
+                    .status(HttpStatus.BAD_REQUEST.value())
+                    .build();
+        }
+
+        baoCaoNo BaoCaoNoMoi = BaoCaoNoRepository.save(mapper.map(BaoCaoNo, baoCaoNo.class));
         return RestResponse.<createBaoCaoNoResponse>builder()
                 .status(HttpStatus.CREATED.value())
                 .data(mapper.map(BaoCaoNoMoi, createBaoCaoNoResponse.class))
@@ -66,23 +82,29 @@ public class baoCaoNoService {
         Optional<baoCaoNo> BaoCaoNoCu = BaoCaoNoRepository.findById(id);
         if (BaoCaoNoCu.isPresent()) {
             if (BaoCaoNo.getPhong_id() != 0) {
-                Optional<phong> Phong_id = PhongRepository.findById(BaoCaoNo.getPhong_id());
-                if (Phong_id.isEmpty()) {
-                    return null;
-                } else {
-                    BaoCaoNoCu.get().setPhong_id(Phong_id.get());
+                List<phong> phongs = PhongRepository.findAll();
+                Optional<phong> ph = Optional.empty();
+                for (phong p : phongs) {
+                    if (p.getSoPhong() == BaoCaoNo.getPhong_id()) {
+                        ph = Optional.ofNullable(p);
+                    }
+                }
+                if (ph.isEmpty()) {
+                    return RestResponse.<updateBaoCaoNoResponse>builder()
+                            .status(HttpStatus.BAD_REQUEST.value())
+                            .build();
                 }
             }
-            if(BaoCaoNo.getNoDau()>0){
+            if (BaoCaoNo.getNoDau() > 0) {
                 BaoCaoNoCu.get().setNoDau(BaoCaoNo.getNoDau());
             }
-            if(BaoCaoNo.getNoCuoi()>0){
+            if (BaoCaoNo.getNoCuoi() > 0) {
                 BaoCaoNoCu.get().setNoCuoi(BaoCaoNo.getNoCuoi());
             }
-            if(BaoCaoNo.getPhatSinh()>0){
+            if (BaoCaoNo.getPhatSinh() > 0) {
                 BaoCaoNoCu.get().setPhatSinh(BaoCaoNo.getPhatSinh());
             }
-            if(BaoCaoNo.getThang()!=null){
+            if (BaoCaoNo.getThang() != null) {
                 BaoCaoNoCu.get().setThang(BaoCaoNo.getThang());
             }
             BaoCaoNoRepository.save(BaoCaoNoCu.get());
@@ -90,13 +112,12 @@ public class baoCaoNoService {
                     .status(HttpStatus.OK.value())
                     .data(mapper.map(BaoCaoNoCu, updateBaoCaoNoResponse.class))
                     .build();
-        }
-        else {
+        } else {
             return null;
         }
     }
 
     public void DeleteHoaDon(Long id) {
-            BaoCaoNoRepository.deleteById(id);
+        BaoCaoNoRepository.deleteById(id);
     }
 }

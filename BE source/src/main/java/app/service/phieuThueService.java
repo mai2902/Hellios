@@ -51,15 +51,27 @@ public class phieuThueService {
                     .build();
         }
         else {
-            return null;
+            return RestResponse.<getOnePhieuThueResponse>builder()
+                    .status(HttpStatus.BAD_REQUEST.value())
+                    .build();
         }
     }
 
     public RestResponse<createPhieuThueResponse> CreatePhieuThue(createPhieuThueRequest PhieuThue) {
-        Optional<phong> Phong = PhongRepository.findById(PhieuThue.getPhong_id());
-        if(Phong.isPresent()) {
-            return null;
+
+        List<phong> phongs = PhongRepository.findAll();
+        Optional<phong> ph = Optional.empty();
+        for (phong p : phongs) {
+            if(p.getSoPhong() == PhieuThue.getPhong_id()){
+                ph = Optional.ofNullable(p);
+            }
         }
+        if (ph.isEmpty()) {
+            return RestResponse.<createPhieuThueResponse>builder()
+                    .status(HttpStatus.BAD_REQUEST.value())
+                    .build();
+        }
+
         phieuThue pt = PhieuThueRepository.save(mapper.map(PhieuThue, phieuThue.class));
         return RestResponse.<createPhieuThueResponse>builder()
                 .status(HttpStatus.CREATED.value())
@@ -70,13 +82,15 @@ public class phieuThueService {
     public RestResponse<updatePhieuThueResponse> UpdatePhieuThue(updatePhieuThueRequest PhieuThue, Long id) {
         Optional<phieuThue> phieuThueCu = PhieuThueRepository.findById(id);
         if (phieuThueCu.isPresent()) {
-            if(PhieuThue.getNguoiThue_id()!=null) {
-                Optional<phong> Phong = PhongRepository.findById(PhieuThue.getPhong_id());
-                if (Phong.isEmpty()) {
-                    return null;
+            if (PhieuThue.getNguoiThue_id() != 0) {
+                Optional<nguoiThue> NguoiThue = NguoiThueRepository.findById(PhieuThue.getNguoiThue_id());
+                if (NguoiThue.isEmpty()) {
+                    return RestResponse.<updatePhieuThueResponse>builder()
+                            .status(HttpStatus.BAD_REQUEST.value())
+                            .build();
                 }
                 else {
-                    phieuThueCu.get().setPhong_id(Phong.get());
+                    phieuThueCu.get().setNguoiThue_id(NguoiThue.get().getId());
                 }
             }
             if(PhieuThue.getNgayBatDau() != null){
@@ -86,26 +100,36 @@ public class phieuThueService {
                 phieuThueCu.get().setNgayKetThuc(PhieuThue.getNgayKetThuc());
             }
             if (PhieuThue.getPhong_id() != 0) {
-                Optional<phong> Phong_id = PhongRepository.findById(PhieuThue.getPhong_id());
-                if (Phong_id.isEmpty()) {
-                    return null;
+                List<phong> phongs = PhongRepository.findAll();
+                Optional<phong> ph = Optional.empty();
+                for (phong p : phongs) {
+                    if(p.getSoPhong() == PhieuThue.getPhong_id()){
+                        ph = Optional.ofNullable(p);
+                    }
+                }
+                if (ph.isEmpty()) {
+                    return RestResponse.<updatePhieuThueResponse>builder()
+                            .status(HttpStatus.BAD_REQUEST.value())
+                            .build();
                 }
                 else {
-                    phieuThueCu.get().setPhong_id(Phong_id.get());
+                    phieuThueCu.get().setPhong(ph.get());
                 }
             }
             PhieuThueRepository.save(phieuThueCu.get());
             return RestResponse.<updatePhieuThueResponse>builder()
-                    .status(HttpStatus.OK.value()).data(null)
-                    //.data(mapper.map(phieuThueCu,updatePhieuThueResponse.class))
+                    .status(HttpStatus.OK.value())
+                    .data(mapper.map(phieuThueCu,updatePhieuThueResponse.class))
                     .build();
         }
         else {
-            return null;
+            return RestResponse.<updatePhieuThueResponse>builder()
+                    .status(HttpStatus.BAD_REQUEST.value())
+                    .build();
         }
     }
 
-    public void DeleteNguoiThue(Long id) {
-        NguoiThueRepository.deleteById(id);
+    public void DeletePhieuThue(Long id) {
+        PhieuThueRepository.deleteById(id);
     }
 }

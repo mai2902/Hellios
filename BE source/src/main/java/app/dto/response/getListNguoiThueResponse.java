@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Data
 public class getListNguoiThueResponse {
     long id;
-    String diaChi;
+    String hoTen;
     Instant ngaySinh;
     String cccd;
     String sdt;

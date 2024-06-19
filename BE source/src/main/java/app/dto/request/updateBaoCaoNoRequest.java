@@ -14,5 +14,6 @@ public class updateBaoCaoNoRequest {
     long noDau;
     long phatSinh;
     long noCuoi;
+    long soPhong;
     Instant thang;
 }

@@ -10,9 +10,9 @@ import java.time.Instant;
 
 public class getListBaoCaoNoResponse {
     long Id;
-    long phong_id;
     long noDau;
     long phatSinh;
     long noCuoi;
+    long soPhong;
     Instant thang;
 }
