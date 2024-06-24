@@ -133,7 +133,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 				donGia: roomPrice,
 				tongTien: finalPayment,
 			};
-            console.log(newInvoice);
 
 			let res = await fetch('http://localhost:8000/api/hoaDon', {
 				method: 'POST',
